@@ -6,6 +6,8 @@ The app is built with modern Android development practices using Kotlin, followi
 
 **Repository**: [https://github.com/Xenonesis/Android-SoS.git](https://github.com/Xenonesis/Android-SoS.git)
 
+Presentation link -> https://drive.google.com/file/d/1hgAfS9u4c8sjMZ-sFo28hId8cVAT4Gh2/view?usp=sharing
+
 ## 📱 App Overview
 
 <p align="center">
