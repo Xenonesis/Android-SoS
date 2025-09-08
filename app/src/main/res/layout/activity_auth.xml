@@ -1,206 +1,423 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_light"
-    android:fillViewport="true"
-    tools:context=".ui.auth.AuthActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_primary"
+        android:fillViewport="true"
+        tools:context=".ui.auth.AuthActivity">
 
-        <!-- App Logo/Icon -->
-        <ImageView
-            android:id="@+id/iv_app_logo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="48dp"
-            android:contentDescription="@string/app_name"
-            android:src="@mipmap/ic_launcher"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- App Title -->
-        <TextView
-            android:id="@+id/tv_app_title"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/app_name"
-            android:textColor="@color/primary_red"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_app_logo" />
+            android:padding="24dp">
 
-        <!-- Subtitle -->
-        <TextView
-            android:id="@+id/tv_subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Your Safety Companion"
-            android:textColor="@color/gray_600"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_app_title" />
-
-        <!-- Phone Number Input -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_phone_number"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:hint="Phone Number"
-            app:boxStrokeColor="@color/primary_red"
-            app:hintTextColor="@color/primary_red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_subtitle"
-            app:prefixText="+1 "
-            app:startIconDrawable="@drawable/ic_phone">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_phone_number"
-                android:layout_width="match_parent"
+            <!-- Top Section with Logo and Welcome -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:maxLines="1" />
+                android:layout_marginTop="32dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Send Code Button -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_send_code"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="24dp"
-            android:text="Send Verification Code"
-            android:textSize="16sp"
-            app:backgroundTint="@color/primary_red"
-            app:cornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_phone_number" />
-
-        <!-- Verification Code Input -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_verification_code"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="Verification Code"
-            android:visibility="gone"
-            app:boxStrokeColor="@color/primary_red"
-            app:hintTextColor="@color/primary_red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_send_code"
-            app:startIconDrawable="@drawable/ic_security"
-            tools:visibility="visible">
-
-            <LinearLayout
-                android:id="@+id/layout_verification_code"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                tools:visibility="visible">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_verification_code"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLength="6"
-                    android:maxLines="1" />
+                    android:orientation="vertical"
+                    android:padding="32dp"
+                    android:gravity="center">
 
-            </LinearLayout>
+                    <!-- App Logo with Shield -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:cardCornerRadius="50dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@color/gray_50">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                        <ImageView
+                            android:id="@+id/iv_app_logo"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_shield_check"
+                            android:tint="@color/primary_red" />
 
-        <!-- Verify Code Button -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_verify_code"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="16dp"
-            android:text="Verify Code"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:backgroundTint="@color/accent_green"
-            app:cornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_verification_code"
-            tools:visibility="visible" />
+                    </androidx.cardview.widget.CardView>
 
-        <!-- Resend Code -->
-        <TextView
-            android:id="@+id/tv_resend_code"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="?attr/selectableItemBackground"
-            android:padding="8dp"
-            android:text="Resend Code"
-            android:textColor="@color/secondary_blue"
-            android:textSize="14sp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_verify_code"
-            tools:visibility="visible" />
+                    <!-- Welcome Text -->
+                    <TextView
+                        android:id="@+id/tv_welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Welcome to"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp" />
 
-        <!-- Progress Bar -->
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_resend_code" />
+                    <!-- App Title -->
+                    <TextView
+                        android:id="@+id/tv_app_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/app_name"
+                        android:textColor="@color/gray_900"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
 
-        <!-- Skip Authentication (Demo) -->
-        <TextView
-            android:id="@+id/btn_skip_auth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:background="?attr/selectableItemBackground"
-            android:padding="12dp"
-            android:text="Skip Authentication (Demo)"
-            android:textColor="@color/gray_500"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+                    <!-- Subtitle -->
+                    <TextView
+                        android:id="@+id/tv_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Your trusted safety companion"
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp"
+                        android:gravity="center" />
 
-        <!-- Privacy Notice -->
-        <TextView
-            android:id="@+id/tv_privacy_notice"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:gravity="center"
-            android:text="By continuing, you agree to our Terms of Service and Privacy Policy. Your phone number will be used for authentication and emergency services only."
-            android:textColor="@color/gray_500"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_skip_auth" />
+                </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-</ScrollView>
+            <!-- Main Login Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_header">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <!-- Quick Access Section -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quick Access"
+                        android:textColor="@color/gray_700"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Biometric Options -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="20dp">
+
+                        <!-- Fingerprint Button -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_fingerprint"
+                            android:layout_width="0dp"
+                            android:layout_height="60dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="2dp"
+                            app:cardBackgroundColor="@color/gray_50"
+                            android:foreground="?attr/selectableItemBackground">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_fingerprint"
+                                    android:layout_marginEnd="8dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Touch ID"
+                                    android:textColor="@color/gray_700"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Face ID Button -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btn_face_id"
+                            android:layout_width="0dp"
+                            android:layout_height="60dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="2dp"
+                            app:cardBackgroundColor="@color/gray_50"
+                            android:foreground="?attr/selectableItemBackground">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_face_id"
+                                    android:layout_marginEnd="8dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Face ID"
+                                    android:textColor="@color/gray_700"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <!-- Google Sign In Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_google_sign_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Continue with Google"
+                        android:textAllCaps="false"
+                        android:textColor="@color/gray_700"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@color/white"
+                        app:cornerRadius="12dp"
+                        app:icon="@drawable/googleg_standard_color_18"
+                        app:iconGravity="textStart"
+                        app:iconTint="@null"
+                        app:strokeColor="@color/gray_200"
+                        app:strokeWidth="2dp"
+                        app:elevation="2dp" />
+
+                    <!-- Or Divider -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/gray_200" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:text="or continue with email"
+                            android:textColor="@color/gray_500"
+                            android:textSize="14sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/gray_200" />
+
+                    </LinearLayout>
+
+                    <!-- Email Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Email address"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary_red"
+                        app:boxStrokeWidth="2dp"
+                        app:hintTextColor="@color/primary_red"
+                        app:startIconDrawable="@drawable/ic_email"
+                        app:startIconTint="@color/gray_600">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Password Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:hint="Password"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeColor="@color/primary_red"
+                        app:boxStrokeWidth="2dp"
+                        app:endIconMode="password_toggle"
+                        app:hintTextColor="@color/primary_red"
+                        app:startIconDrawable="@drawable/ic_security"
+                        app:startIconTint="@color/gray_600">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Sign In Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_email_sign_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Sign In"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@color/primary_red"
+                        app:cornerRadius="12dp"
+                        app:elevation="4dp" />
+
+                    <!-- Forgot Password -->
+                    <TextView
+                        android:id="@+id/tv_forgot_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:padding="8dp"
+                        android:text="Forgot Password?"
+                        android:textColor="@color/secondary_blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <!-- Sign Up Link -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Don't have an account? "
+                            android:textColor="@color/gray_600"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_up"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/selectableItemBackground"
+                            android:padding="4dp"
+                            android:text="Sign Up"
+                            android:textColor="@color/primary_red"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Progress Bar -->
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:visibility="gone"
+                android:indeterminateTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_login" />
+
+            <!-- Demo Skip Button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_demo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progress_bar">
+
+                <TextView
+                    android:id="@+id/btn_skip_auth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="16dp"
+                    android:text="🚀 Try Demo Mode"
+                    android:textColor="@color/gray_600"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Privacy Notice -->
+            <TextView
+                android:id="@+id/tv_privacy_notice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:text="🔒 Your data is encrypted and secure. By continuing, you agree to our Terms of Service and Privacy Policy."
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_demo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

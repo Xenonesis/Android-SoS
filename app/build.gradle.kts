@@ -5,7 +5,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
-    id("kotlin-kapt")
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.ksp)
 }
 
 // Load API key from local.properties
@@ -16,15 +17,15 @@ if (localPropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.xenonesis.womensafety"
-    compileSdk = 36
+    namespace = "com.womensafety.app"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.xenonesis.womensafety"
+        applicationId = "com.womensafety.app"
         minSdk = 26
-        targetSdk = 36
-        versionCode = 2
-        versionName = "0.30"
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         
@@ -34,7 +35,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -42,13 +44,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
+        dataBinding = true
         viewBinding = true
     }
 }
@@ -74,7 +77,7 @@ dependencies {
     // Room Database
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
     
     // Network
     implementation(libs.retrofit)
@@ -92,6 +95,13 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.messaging)
     implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
+    
+    // Google Identity Services (newer, non-deprecated)
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation("androidx.credentials:credentials:1.2.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.2.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.0")
     
     // Google Play Services
     implementation(libs.play.services.location)

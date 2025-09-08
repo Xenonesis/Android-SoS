@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Smart SOS</string>
     
+    <!-- Firebase Web Client ID -->
+    <string name="default_web_client_id">1013685104958-ofim4erqpjgld1bv8i52a8or1uaq6rkp.apps.googleusercontent.com</string>
+    
     <!-- Main Screen -->
     <string name="emergency_button">EMERGENCY</string>
     <string name="tap_for_help">Tap for immediate help</string>
