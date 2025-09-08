@@ -55,4 +55,10 @@
     <color name="primary">@color/primary_red</color>
     <color name="text_primary">@color/gray_900</color>
     <color name="text_secondary">@color/gray_600</color>
+    
+    <!-- Additional colors for tracking UI -->
+    <color name="primary_dark">@color/primary_red_dark</color>
+    <color name="green_500">#48BB78</color>
+    <color name="red_500">#F56565</color>
+    <color name="blue_500">#4299E1</color>
 </resources>

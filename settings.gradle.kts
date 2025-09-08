@@ -1,14 +1,17 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
+        maven {
+            url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+        }
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
+        maven {
+            url = uri("https://repo.spring.io/libs-release/")
+        }
     }
 }
 dependencyResolutionManagement {
